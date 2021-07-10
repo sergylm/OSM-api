@@ -1,0 +1,12 @@
+#prueba{
+    border-color: rgb(0, 0, 0);
+    border-width: 2px;
+    border-style: solid;
+    height: 100px;
+    background-color: royalblue;
+}
+#fileInput{
+    background-color: red;
+    height: 100px;
+    width: 1300px;
+}

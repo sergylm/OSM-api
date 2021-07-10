@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dropzone.min.css')}}">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>OSM2OBJ</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title"> Tutorial</h1>
+        <div class="form-container">
+            <form class="dropzone" id="FormUploadFile" action="/upload" method="POST">
+                <div class="dz-message">
+                    <h2>Upload your files</h2>
+                    <span class="note">Max 1 file</span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='dropzone.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js"></script>
+</body>
+</html>
