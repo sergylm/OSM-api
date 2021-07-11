@@ -25,7 +25,10 @@ def upload_file():
     if file.filename == '':
         return 'Error not file', 400
     if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
+        secfilename = secure_filename(file.filename)
+        filename = secfilename.rsplit('.')[0]
+        file.save(secfilename)
+        os.system('java -Xmx512m -jar OSM2World/OSM2World.jar -i {} -o {}'.format(secfilename, filename + '.obj'))
         return 'OK', 200
     return 'Format not valid', 400
 
