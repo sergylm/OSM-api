@@ -30,6 +30,8 @@ def upload():
     if file and allowed_file(file.filename):
         secfilename = secure_filename(file.filename)
         filename = secfilename.rsplit('.')[0]
+        if not os.path.exists('uploads'):
+            os.makedirs('uploads')
         file.save('uploads/' + secfilename)
         return 'OK', 200
     return 'Format not valid', 400
@@ -41,10 +43,17 @@ def download():
 @app.route('/convert', methods=['POST'])
 def osm2obj():
     files = os.listdir('uploads')
+    if not os.path.exists('downloads'):
+            os.makedirs('downloads')
     for file in files:
         os.system('java -Xmx512m -jar OSM2World/OSM2World.jar -i {} -o {}'.format('uploads/' + file, 'downloads/' + file.rsplit('.')[0] + '.obj'))
     zip(os.listdir('downloads'))
     return 'Done'
+
+@app.route('/aux', methods=['POST'])
+def aux():
+    return time.sleep(1)
+
 
 def zip(path):
     with zipfile.ZipFile('objects.zip', 'w' , zipfile.ZIP_DEFLATED) as zf:
